@@ -1,0 +1,16 @@
+version: '3'
+services:
+  angapp:
+    build:
+      context: .
+      dockerfile: Dockerfile.angapp
+    expose:
+      - "5000"
+  nginx:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+    links :
+      - angapp
